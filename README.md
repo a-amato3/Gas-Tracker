@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -18,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 This is a simple Ethereum Gas Tracker application built with Next.js. It retrieves and displays the current gas prices for low, standard, and high-priority transaction processing using the Ethereum Gas Station API.
 
 # Features
-Displays the latest gas prices in Gwei and USD ($).
-Mobile-first design with responsive layout.
-Fetches the gas prices from the Ethereum Gas Station API.
-Uses Tailwind CSS for styling.
+- Displays the latest gas prices in Gwei and USD ($).
+- Mobile-first design with responsive layout.
+- Fetches the gas prices from the Ethereum Gas Station API.
+- Uses Tailwind CSS for styling.
