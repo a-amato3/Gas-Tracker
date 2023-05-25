@@ -6,26 +6,6 @@ import { GasPricesResponse } from "./types/gas_prices";
 
 const GasTracker = (): JSX.Element => {
   const [gasPrices, setGasPrices] = useState<GasPricesResponse | null>(null);
-  /* 
-  useEffect(() => {
-    const fetchGasPrices = async () => {
-      try {
-        const response = await fetch(
-          "https://ethgasstation.info/api/ethgasAPI.json?"
-        );
-        const data = await response.json();
-        setGasPrices({
-          low: data.safeLow / 10,
-          standard: data.average / 10,
-          high: data.fast / 10,
-        });
-      } catch (error) {
-        console.error("Error fetching gas prices:", error);
-      }
-    };
-
-    fetchGasPrices();
-  }, []); */
 
   useEffect(() => {
     const fetchGasPrices = async () => {
@@ -57,18 +37,21 @@ const GasTracker = (): JSX.Element => {
         <h1 className="font-bold pb-4">Ethereum Gas Tracker</h1>
         <h2 className="pb-4">Gas Prices</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <p className=" bg-white border border-white-200 rounded-lg shadow dark:bg-gray-200 dark:border-white-700 text-gray-700 p-8 ">
-            🛴 Low Priority: {formatPrice(gasPrices.standard)} gwei ($
-            {formatPrice(gasPrices.standard * 0.01)})
-          </p>
-          <p className=" bg-white border border-white-200 rounded-lg shadow dark:bg-gray-200 dark:border-white-700 text-gray-700 p-8 ">
-            🚗 Standard Priority: {formatPrice(gasPrices.fast)} gwei ($
-            {formatPrice(gasPrices.fast * 0.01)})
-          </p>
-          <p className=" bg-white border border-white-200 rounded-lg shadow dark:bg-gray-200 dark:border-white-700 text-gray-700 p-8 ">
-            ✈️ High Priority: {formatPrice(gasPrices.instant)} gwei ($
-            {formatPrice(gasPrices.instant * 0.01)})
-          </p>
+          <div className="text-center	bg-white  border border-white-200 rounded-lg shadow dark:bg-gray-200 dark:border-white-700 text-gray-700 p-8 ">
+            <div className="font-bold">🛴 Low Priority</div>
+            <div> {formatPrice(gasPrices.standard)} GWei</div>
+            <div>$ {formatPrice(gasPrices.standard * 0.01)}</div>
+          </div>
+          <div className="text-center bg-white border border-white-200 rounded-lg shadow dark:bg-gray-200 dark:border-white-700 text-gray-700 p-8 ">
+            <div className="font-bold">🚗 Standard Priority</div>
+            <div> {formatPrice(gasPrices.fast)} GWei</div>
+            <div>$ {formatPrice(gasPrices.fast * 0.01)}</div>
+          </div>
+          <div className="text-center bg-white border border-white-200 rounded-lg shadow dark:bg-gray-200 dark:border-white-700 text-gray-700 p-8 ">
+            <div className="font-bold">✈️ High Priority</div>
+            <div> {formatPrice(gasPrices.instant)} GWei</div>
+            <div>$ {formatPrice(gasPrices.instant * 0.01)}</div>
+          </div>
         </div>
       </div>
     </main>
