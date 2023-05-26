@@ -7,15 +7,21 @@ import { GasPricesResponse } from "./types/gas_prices";
 const GasTracker = (): JSX.Element => {
   const [gasPrices, setGasPrices] = useState<GasPricesResponse | null>(null);
 
+  // Fetches gas prices from the provided API and sets the gas prices in the local state
   useEffect(() => {
     const fetchGasPrices = async () => {
       try {
         const response = await fetch(
           "https://api.ethgasstation.info/api/fee-estimate"
         );
+
+        // Extracts the data from the response
         const data = await response.json();
+
+        // Updates the gas prices state variable with the fetched data
         setGasPrices(data.gasPrice);
       } catch (error) {
+        // Handle any errors that occur during the fetching process
         console.error("Error fetching gas prices:", error);
       }
     };
@@ -23,12 +29,18 @@ const GasTracker = (): JSX.Element => {
     fetchGasPrices();
   }, []);
 
+  // Formatting of the given price by dividing it by 10 and rounding it to 2 decimal places
   const formatPrice = (price: number): string => {
     return (price / 10).toFixed(2);
   };
 
+  // If the gasPrices state variable is null, this will load a fallback message
   if (!gasPrices) {
-    return <div className="flex h-screen">Loading gas prices...</div>;
+    return (
+      <div className="flex h-screen items-center justify-center">
+        Loading gas prices...
+      </div>
+    );
   }
 
   return (
