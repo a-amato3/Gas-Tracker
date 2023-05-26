@@ -8,7 +8,9 @@ export interface GasPricesResponse {
     standard: number;
   };
   nextBaseFee: number;
-  fast: number;
-  instant: number;
-  standard: number;
+  priorityFee: {
+    fast: number;
+    instant: number;
+    standard: number;
+  };
 }
